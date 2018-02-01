@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,15 @@ public class GuestbookDao {
 		sqlSession.insert("guestbook.insert", guestbookVo);
 		
 	}
-	public void delete(@RequestParam("no")int no,
-					   @RequestParam("password") String password) {
-		sqlSession.delete("guestbook.delete", no);
+	public void delete(int no,
+					   String password) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("no", no);
+		map.put("password", password);
 		
+		sqlSession.delete("guestbook.delete", map);
+		
+
 	}
 	
 }

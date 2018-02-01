@@ -40,10 +40,11 @@ public class GuestbookController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam("no") int no, 
-						 @RequestParam("password") String password) {
+						 @RequestParam("password") String password,
+						 GuestbookVo guestbookVo) {
 		System.out.println("delete 진입");
 		guestbookDao.delete(no, password);
-		
+		System.out.println(guestbookVo.toString());
 		return "redirect:/list";
 	}
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)

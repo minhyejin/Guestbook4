@@ -16,7 +16,8 @@
         ]]>
 	</select>
 	
-	<delete id="delete" parameterType="com.javaex.vo.GuestbookVo">
+	
+	<delete id="delete" parameterType="map">
 	<![CDATA[
 			delete from guestbook 
 			where no = #{no} and password = #{password}
